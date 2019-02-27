@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\GaleriaRepository;
 use Validator;
-//use App\Http\Requests\GaleriaRequest;
+use App\Http\Requests\GaleriaRequest;
 
 class GaleriaController extends Controller {
 
@@ -40,20 +40,8 @@ class GaleriaController extends Controller {
         return strtolower($image_new_name . '.' . $image_extension);
     }
     
-    public function postImage(Request $request)
+    public function postImage(GaleriaRequest $request)
     {
-        
-        $validator = Validator::make($request->all(), [
-            'fecha'       =>  'required|date_format:"m/d/Y',
-            'imagen_1'    =>  'required|image|mimes:png,jpg,jpeg,gif,bmp',
-            'imagen_2'    =>  'required|image|mimes:png,jpg,jpeg,gif,bmp'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('/')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
 
         $nombre_imagen_1 = $this->saveImage( $request->file('imagen_1') );
         $nombre_imagen_2 = $this->saveImage( $request->file('imagen_2') );

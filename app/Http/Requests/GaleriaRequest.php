@@ -36,7 +36,7 @@ class GaleriaRequest extends FormRequest
         return [
             'fecha.required' => 'fecha debe ser ingresado',
             'fecha.date_format' => 'fecha debe ser el formato correcto',
-            'imagen_1.required' => 'imagen_1 debe ser seleccionada'
+            'imagen_1.required' => 'imagen_1 debe ser seleccionada',
             'imagen_2.required' => 'imagen_1 debe ser seleccionada'
             // ..
         ];
